@@ -1,35 +1,36 @@
-const PRIORIDADES = ["alta", "media", "baja"];
+import { Tarea, Prioridad } from "../models/tarea";
 
-const filtrarPorEstado = (tareas, completada) =>
+const PRIORIDADES: Prioridad[] = ["alta", "media", "baja"];
+
+export const filtrarPorEstado = (tareas: Tarea[], completada: boolean): Tarea[] =>
   tareas.filter((tarea) => tarea.completada === completada);
 
-const filtrarPorPrioridad = (tareas, prioridad) =>
+export const filtrarPorPrioridad = (tareas: Tarea[], prioridad: Prioridad): Tarea[] =>
   tareas.filter((tarea) => tarea.prioridad === prioridad);
 
-const contarPorPrioridad = (tareas) =>
+export const contarPorPrioridad = (tareas: Tarea[]): Record<Prioridad, number> =>
   tareas.reduce(
     (acumulador, tarea) => {
       acumulador[tarea.prioridad] = (acumulador[tarea.prioridad] || 0) + 1;
       return acumulador;
     },
-    { alta: 0, media: 0, baja: 0 }
+    { alta: 0, media: 0, baja: 0 } as Record<Prioridad, number>
   );
 
-const ordenarPorPrioridad = (tareas) =>
+export const ordenarPorPrioridad = (tareas: Tarea[]): Tarea[] =>
   [...tareas].sort(
     (a, b) => PRIORIDADES.indexOf(a.prioridad) - PRIORIDADES.indexOf(b.prioridad)
   );
 
-const buscarTareas = (tareas, criterio) =>
+export const buscarTareas = (tareas: Tarea[], criterio: string): Tarea[] =>
   tareas.filter(
     (tarea) =>
       tarea.titulo.includes(criterio.toLowerCase()) ||
       tarea.descripcion.includes(criterio.toLowerCase())
   );
 
-  
-const validarTarea = (tarea) => {
-  const errores = [];
+export const validarTarea = (tarea: any): { esValida: boolean; errores: string[] } => {
+  const errores: string[] = [];
 
   if (!tarea.titulo || typeof tarea.titulo !== "string" || tarea.titulo.trim() === "") {
     errores.push("El título es obligatorio y debe ser un texto no vacío.");
@@ -48,13 +49,4 @@ const validarTarea = (tarea) => {
   }
 
   return { esValida: errores.length === 0, errores };
-};
-
-module.exports = {
-  filtrarPorEstado,
-  filtrarPorPrioridad,
-  contarPorPrioridad,
-  ordenarPorPrioridad,
-  buscarTareas,
-  validarTarea,
 };
