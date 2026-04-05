@@ -55,3 +55,61 @@ button:hover { background-color: #45a049; }
 .tarea-prioridad, .tarea-estado { font-size: 0.85rem; color: #555; }
 
 .sin-tareas { text-align: center; color: #999; }
+
+/* ── Vista selector ────────────────────────────── */
+.vista-selector {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.vista-selector button {
+  background-color: #e0e0e0;
+  color: #333;
+  flex: 1;
+}
+
+.vista-selector button:hover { background-color: #bdbdbd; }
+
+.vista-selector button.activo {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* ── Cards view ─────────────────────────────────── */
+.lista-tareas.vista-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.tarea-item.vista-cards {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tarea-item.vista-cards button { width: 100%; }
+
+/* ── Tabla view ─────────────────────────────────── */
+.tarea-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tarea-tabla th,
+.tarea-tabla td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tarea-tabla th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.tarea-tabla tr.realizada td { background-color: #e8f5e9; opacity: 0.7; }
+
+.tarea-tabla button { padding: 6px 12px; font-size: 0.8rem; }
