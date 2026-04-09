@@ -1,0 +1,395 @@
+/* ── App ─────────────────────────────────────── */
+.app {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 24px 60px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.app-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: linear-gradient(90deg, #a78bfa, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.app-header p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* ── Formulario ─────────────────────────────── */
+.formulario {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+
+.formulario-campos {
+  display: flex;
+  gap: 10px;
+}
+
+.formulario input {
+  flex: 1;
+  padding: 11px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.formulario input::placeholder {
+  color: #64748b;
+}
+
+.formulario input:focus {
+  border-color: #a78bfa;
+  background: rgba(167, 139, 250, 0.08);
+}
+
+.formulario select {
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  cursor: pointer;
+  outline: none;
+}
+
+.formulario select option {
+  background: #302b63;
+  color: #e2e8f0;
+}
+
+.formulario button {
+  padding: 11px 26px;
+  background: linear-gradient(135deg, #a78bfa, #60a5fa);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.formulario button:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* Input de descripción debajo de la fila principal del formulario */
+.input-descripcion {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+.input-descripcion::placeholder {
+  color: #64748b;
+}
+
+.input-descripcion:focus {
+  border-color: #a78bfa;
+  background: rgba(167, 139, 250, 0.08);
+}
+
+.error {
+  color: #f87171;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  margin-left: 2px;
+}
+
+/* ── Resumen ─────────────────────────────────── */
+.resumen {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.resumen-item {
+  flex: 1;
+  text-align: center;
+  padding: 14px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.88rem;
+  color: #94a3b8;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resumen-item:last-child {
+  border-right: none;
+}
+
+.resumen-item strong {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 1.2;
+}
+
+/* ── Tabla ───────────────────────────────────── */
+.tabla-wrapper {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.tabla-tareas {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-tareas thead tr {
+  background: rgba(167, 139, 250, 0.15);
+}
+
+.tabla-tareas thead th {
+  padding: 13px 18px;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a78bfa;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tabla-tareas tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.tabla-tareas tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabla-tareas tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tabla-tareas tbody tr.completada {
+  opacity: 0.45;
+}
+
+.tabla-tareas td {
+  padding: 13px 18px;
+  font-size: 0.93rem;
+  color: #cbd5e1;
+  vertical-align: middle;
+}
+
+.col-id {
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.82rem;
+  width: 50px;
+}
+
+.col-titulo.completada-texto {
+  text-decoration: line-through;
+  color: #64748b;
+}
+
+.col-estado span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.estado-pendiente {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.estado-completada {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+}
+
+.prioridad-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.prioridad-badge.alta  { background: rgba(239, 68, 68, 0.15);  color: #f87171; }
+.prioridad-badge.media { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.prioridad-badge.baja  { background: rgba(34, 197, 94, 0.15);  color: #4ade80; }
+
+.btn-eliminar {
+  background: none;
+  border: none;
+  color: #475569;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 5px 9px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-eliminar:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.sin-tareas {
+  text-align: center;
+  color: #475569;
+  font-size: 1rem;
+  padding: 60px 20px;
+  line-height: 2;
+}
+
+/* ── Barra de búsqueda ──────────────────────── */
+.barra-busqueda {
+  margin-bottom: 16px;
+}
+
+.barra-busqueda input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+.barra-busqueda input::placeholder {
+  color: #64748b;
+}
+
+.barra-busqueda input:focus {
+  border-color: #60a5fa;
+  background: rgba(96, 165, 250, 0.06);
+}
+
+/* ── Filtros y orden ─────────────────────────── */
+.filtros-orden {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.filtro-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  margin-right: 8px;
+}
+
+.filtro-estado {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filtro-estado button {
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filtro-estado button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+}
+
+/* Botón de filtro seleccionado */
+.filtro-estado button.activo {
+  background: rgba(167, 139, 250, 0.2);
+  border-color: #a78bfa;
+  color: #a78bfa;
+}
+
+.orden-prioridad {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.orden-prioridad select {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  cursor: pointer;
+  outline: none;
+}
+
+.orden-prioridad select option {
+  background: #302b63;
+  color: #e2e8f0;
+}
+
+/* ── Descripción dentro de la fila de la tabla ── */
+.descripcion-texto {
+  display: block;
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 2px;
+  font-weight: 400;
+}
