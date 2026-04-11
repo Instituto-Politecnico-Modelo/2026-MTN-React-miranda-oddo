@@ -1,4 +1,3 @@
-/* ── App ─────────────────────────────────────── */
 .app {
   max-width: 900px;
   margin: 40px auto;
@@ -25,7 +24,7 @@
   font-size: 0.95rem;
 }
 
-/* ── Formulario ─────────────────────────────── */
+
 .formulario {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -95,7 +94,6 @@
   transform: translateY(-1px);
 }
 
-/* Input de descripción debajo de la fila principal del formulario */
 .input-descripcion {
   width: 100%;
   margin-top: 10px;
@@ -126,7 +124,6 @@
   margin-left: 2px;
 }
 
-/* ── Resumen ─────────────────────────────────── */
 .resumen {
   display: flex;
   gap: 0;
@@ -159,7 +156,6 @@
   line-height: 1.2;
 }
 
-/* ── Tabla ───────────────────────────────────── */
 .tabla-wrapper {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -283,7 +279,7 @@
   line-height: 2;
 }
 
-/* ── Barra de búsqueda ──────────────────────── */
+
 .barra-busqueda {
   margin-bottom: 16px;
 }
@@ -310,7 +306,7 @@
   background: rgba(96, 165, 250, 0.06);
 }
 
-/* ── Filtros y orden ─────────────────────────── */
+
 .filtros-orden {
   display: flex;
   justify-content: space-between;
@@ -356,7 +352,6 @@
   color: #e2e8f0;
 }
 
-/* Botón de filtro seleccionado */
 .filtro-estado button.activo {
   background: rgba(167, 139, 250, 0.2);
   border-color: #a78bfa;
@@ -385,7 +380,6 @@
   color: #e2e8f0;
 }
 
-/* ── Descripción dentro de la fila de la tabla ── */
 .descripcion-texto {
   display: block;
   font-size: 0.78rem;
