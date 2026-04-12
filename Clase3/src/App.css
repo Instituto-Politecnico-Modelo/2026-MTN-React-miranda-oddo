@@ -55,3 +55,143 @@ button:hover { background-color: #45a049; }
 .tarea-prioridad, .tarea-estado { font-size: 0.85rem; color: #555; }
 
 .sin-tareas { text-align: center; color: #999; }
+
+/* ── Barra de filtros ───────────────────────────── */
+.filtros-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filtros-label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.filtros-label i {
+  margin-right: 4px;
+}
+
+/* ── Filtros colapsables ────────────────────────── */
+.filtro-colapsable {
+  position: relative;
+}
+
+.filtro-toggle {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  min-width: 110px;
+}
+
+.filtro-toggle i {
+  margin-left: 4px;
+  font-size: 0.7rem;
+}
+
+.filtro-toggle:hover { background-color: #bdbdbd; }
+
+.filtro-toggle.abierto {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.filtro-opciones {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+  min-width: 100%;
+}
+
+.filtro-opciones button {
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.filtro-opciones button:hover { background-color: #e0e0e0; }
+
+.filtro-opciones button.activo {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* ── Cards view ─────────────────────────────────── */
+.lista-tareas.vista-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.tarea-item.vista-cards {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tarea-item.vista-cards button { width: 100%; }
+
+/* ── Tabla view ─────────────────────────────────── */
+.tarea-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tarea-tabla th,
+.tarea-tabla td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tarea-tabla th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.tarea-tabla tr.realizada td { background-color: #e8f5e9; opacity: 0.7; }
+
+.tarea-tabla button { padding: 6px 12px; font-size: 0.8rem; }
+
+/* ── Botón eliminar ─────────────────────────────── */
+.btn-eliminar {
+  background-color: #e53935 !important;
+}
+
+.btn-eliminar:hover {
+  background-color: #c62828 !important;
+}
+
+/* ── Acciones de tarea ──────────────────────────── */
+.tarea-acciones {
+  display: flex;
+  gap: 6px;
+}
+
+.tarea-item.vista-cards .tarea-acciones {
+  width: 100%;
+}
+
+.tarea-item.vista-cards .tarea-acciones button {
+  flex: 1;
+}
+
+.tarea-tabla .btn-eliminar { padding: 6px 12px; font-size: 0.8rem; }
