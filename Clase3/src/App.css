@@ -56,22 +56,79 @@ button:hover { background-color: #45a049; }
 
 .sin-tareas { text-align: center; color: #999; }
 
-/* ── Vista selector ────────────────────────────── */
-.vista-selector {
+/* ── Barra de filtros ───────────────────────────── */
+.filtros-bar {
   display: flex;
-  gap: 6px;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 16px;
 }
 
-.vista-selector button {
-  background-color: #e0e0e0;
+.filtros-label {
+  font-weight: bold;
+  font-size: 0.9rem;
   color: #333;
-  flex: 1;
+  white-space: nowrap;
 }
 
-.vista-selector button:hover { background-color: #bdbdbd; }
+.filtros-label i {
+  margin-right: 4px;
+}
 
-.vista-selector button.activo {
+/* ── Filtros colapsables ────────────────────────── */
+.filtro-colapsable {
+  position: relative;
+}
+
+.filtro-toggle {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  min-width: 110px;
+}
+
+.filtro-toggle i {
+  margin-left: 4px;
+  font-size: 0.7rem;
+}
+
+.filtro-toggle:hover { background-color: #bdbdbd; }
+
+.filtro-toggle.abierto {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.filtro-opciones {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+  min-width: 100%;
+}
+
+.filtro-opciones button {
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.filtro-opciones button:hover { background-color: #e0e0e0; }
+
+.filtro-opciones button.activo {
   background-color: #4CAF50;
   color: white;
 }
@@ -113,3 +170,28 @@ button:hover { background-color: #45a049; }
 .tarea-tabla tr.realizada td { background-color: #e8f5e9; opacity: 0.7; }
 
 .tarea-tabla button { padding: 6px 12px; font-size: 0.8rem; }
+
+/* ── Botón eliminar ─────────────────────────────── */
+.btn-eliminar {
+  background-color: #e53935 !important;
+}
+
+.btn-eliminar:hover {
+  background-color: #c62828 !important;
+}
+
+/* ── Acciones de tarea ──────────────────────────── */
+.tarea-acciones {
+  display: flex;
+  gap: 6px;
+}
+
+.tarea-item.vista-cards .tarea-acciones {
+  width: 100%;
+}
+
+.tarea-item.vista-cards .tarea-acciones button {
+  flex: 1;
+}
+
+.tarea-tabla .btn-eliminar { padding: 6px 12px; font-size: 0.8rem; }

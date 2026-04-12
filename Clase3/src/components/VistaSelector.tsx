@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Vista } from '../types'
 
 interface VistaSelectorProps {
@@ -12,18 +13,31 @@ const opciones: { valor: Vista; etiqueta: string }[] = [
 ]
 
 function VistaSelector({ vista, onCambiarVista }: VistaSelectorProps) {
+  const [abierto, setAbierto] = useState(false)
+
   return (
-    <div className="vista-selector">
-      {opciones.map(({ valor, etiqueta }) => (
-        <button
-          key={valor}
-          type="button"
-          className={vista === valor ? 'activo' : ''}
-          onClick={() => onCambiarVista(valor)}
-        >
-          {etiqueta}
-        </button>
-      ))}
+    <div className="filtro-colapsable">
+      <button
+        type="button"
+        className={`filtro-toggle ${abierto ? 'abierto' : ''}`}
+        onClick={() => setAbierto(!abierto)}
+      >
+        Vista <i className={`fa-solid fa-chevron-${abierto ? 'up' : 'down'}`}></i>
+      </button>
+      {abierto && (
+        <div className="filtro-opciones">
+          {opciones.map(({ valor, etiqueta }) => (
+            <button
+              key={valor}
+              type="button"
+              className={vista === valor ? 'activo' : ''}
+              onClick={() => onCambiarVista(valor)}
+            >
+              {etiqueta}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

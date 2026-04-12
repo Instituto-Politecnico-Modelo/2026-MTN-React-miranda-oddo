@@ -3,13 +3,17 @@ import TareaForm from './components/TareaForm'
 import TareaItem from './components/TareaItem'
 import BuscadorTareas from './components/BuscadorTareas'
 import VistaSelector from './components/VistaSelector'
-import type { Prioridad, Tarea, Vista } from './types'
+import FiltroEstado from './components/FiltroEstado'
+import OrdenPrioridad from './components/OrdenPrioridad'
+import type { FiltroEstado as FiltroEstadoType, Ordenamiento, Prioridad, Tarea, Vista } from './types'
 import './App.css'
 
 function App() {
   const [tareas, setTareas] = useState<Tarea[]>([])
   const [busqueda, setBusqueda] = useState('')
   const [vista, setVista] = useState<Vista>('listado')
+  const [filtroEstado, setFiltroEstado] = useState<FiltroEstadoType>('todas')
+  const [ordenamiento, setOrdenamiento] = useState<Ordenamiento>('ninguno')
 
   const agregarTarea = (titulo: string, prioridad: Prioridad) => {
     const nuevaTarea: Tarea = {
@@ -26,6 +30,22 @@ function App() {
     setBusqueda(termino)
   }
 
+  const cambiarVista = (nuevaVista: Vista) => {
+    setVista(nuevaVista)
+  }
+
+  const eliminarTarea = (id: number) => {
+    setTareas((prevTareas) => prevTareas.filter((tarea) => tarea.id !== id))
+  }
+
+  const filtrarPorEstado = (filtro: FiltroEstadoType) => {
+    setFiltroEstado(filtro)
+  }
+
+  const ordenarPorPrioridad = (orden: Ordenamiento) => {
+    setOrdenamiento(orden)
+  }
+
   const marcarComoRealizada = (id: number) => {
     setTareas((prevTareas) =>
       prevTareas.map((tarea) =>
@@ -34,9 +54,20 @@ function App() {
     )
   }
 
-  const tareasFiltradas = tareas.filter((tarea) =>
-    tarea.titulo.toLowerCase().includes(busqueda.toLowerCase()),
-  )
+  const pesoPrioridad: Record<Prioridad, number> = { alta: 1, media: 2, baja: 3 }
+
+  const tareasFiltradas = tareas
+    .filter((tarea) =>
+      tarea.titulo.toLowerCase().includes(busqueda.toLowerCase()),
+    )
+    .filter((tarea) =>
+      filtroEstado === 'todas' ? true : tarea.estado === filtroEstado,
+    )
+    .sort((a, b) => {
+      if (ordenamiento === 'prioridad-asc') return pesoPrioridad[a.prioridad] - pesoPrioridad[b.prioridad]
+      if (ordenamiento === 'prioridad-desc') return pesoPrioridad[b.prioridad] - pesoPrioridad[a.prioridad]
+      return 0
+    })
 
   return (
     <div className="app">
@@ -44,7 +75,13 @@ function App() {
 
       <TareaForm onAgregar={agregarTarea} />
       <BuscadorTareas onBuscar={buscarTareas} />
-      <VistaSelector vista={vista} onCambiarVista={setVista} />
+
+      <div className="filtros-bar">
+        <span className="filtros-label"><i className="fa-solid fa-sliders"></i> Filtros</span>
+        <FiltroEstado filtro={filtroEstado} onCambiarFiltro={filtrarPorEstado} />
+        <OrdenPrioridad ordenamiento={ordenamiento} onCambiarOrden={ordenarPorPrioridad} />
+        <VistaSelector vista={vista} onCambiarVista={cambiarVista} />
+      </div>
 
       {tareasFiltradas.length === 0 ? (
         <p className="sin-tareas">No hay tareas para mostrar.</p>
@@ -70,6 +107,9 @@ function App() {
                       Marcar como realizada
                     </button>
                   )}
+                  <button type="button" className="btn-eliminar" onClick={() => eliminarTarea(tarea.id)}>
+                    Eliminar
+                  </button>
                 </td>
               </tr>
             ))}
@@ -83,6 +123,7 @@ function App() {
               tarea={tarea}
               vista={vista}
               onMarcarRealizada={marcarComoRealizada}
+              onEliminar={eliminarTarea}
             />
           ))}
         </div>

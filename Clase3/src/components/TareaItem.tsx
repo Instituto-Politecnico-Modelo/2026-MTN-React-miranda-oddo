@@ -4,6 +4,7 @@ interface TareaItemProps {
   tarea: Tarea
   vista?: Vista
   onMarcarRealizada: (id: number) => void
+  onEliminar: (id: number) => void
 }
 
 const prioridadTexto: Record<Prioridad, string> = {
@@ -12,7 +13,7 @@ const prioridadTexto: Record<Prioridad, string> = {
   baja: 'Baja',
 }
 
-function TareaItem({ tarea, vista = 'listado', onMarcarRealizada }: TareaItemProps) {
+function TareaItem({ tarea, vista = 'listado', onMarcarRealizada, onEliminar }: TareaItemProps) {
   const { id, titulo, prioridad, estado } = tarea
 
   return (
@@ -24,11 +25,16 @@ function TareaItem({ tarea, vista = 'listado', onMarcarRealizada }: TareaItemPro
           {estado === 'realizada' ? 'Realizada' : 'Pendiente'}
         </span>
       </div>
-      {estado !== 'realizada' && (
-        <button type="button" onClick={() => onMarcarRealizada(id)}>
-          Marcar como realizada
+      <div className="tarea-acciones">
+        {estado !== 'realizada' && (
+          <button type="button" onClick={() => onMarcarRealizada(id)}>
+            Marcar como realizada
+          </button>
+        )}
+        <button type="button" className="btn-eliminar" onClick={() => onEliminar(id)}>
+          Eliminar
         </button>
-      )}
+      </div>
     </div>
   )
 }
